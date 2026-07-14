@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="../wp-content/themes/jadtec/assets/img/favicon.ico" sizes="any">
+	<link rel="icon" type="image/png" href="../wp-content/themes/jadtec/assets/img/favicon-32.png" sizes="32x32">
+	<link rel="apple-touch-icon" href="https://jadtec.tokyo/wp-content/themes/jadtec/assets/img/favicon-180.png">
 	<title>業務内容｜建築図面作成・施工図・積算・BIM・CADトレースの外注支援｜JADTEC</title>
 <meta name='robots' content='max-image-preview:large' />
 	<meta name="description" content="建築の図面作成、設計補助、施工図、構造計算・省エネ計算のサポート、申請書作成、積算、BIM・3Dモデル作成、CADトレース、図面の電子化まで。対応内容・必要資料・納品形式をサービスごとに掲載しています。">
@@ -43,9 +46,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	</script>
 </head>
 <body class="wp-singular page-template-default page page-id-4 wp-embed-responsive wp-theme-jadtec">
-<div style="position:sticky;top:0;z-index:200;background:#8A6D1F;color:#fff;padding:.6rem 1rem;text-align:center;font-size:.85rem;font-weight:700;line-height:1.6">
-確認用プレビュー（静的版）です。お問い合わせフォームの送信はこの環境では動作しません（本番のWordPressでは動作します）。検索エンジンには登録されません。
-</div>
+<div style="position:sticky;top:0;z-index:200;background:#8A6D1F;color:#fff;padding:.6rem 1rem;text-align:center;font-size:.85rem;font-weight:700;line-height:1.6">確認用プレビュー（静的版）です。お問い合わせフォームの送信はこの環境では動作しません（本番のWordPressでは確認画面・自動返信まで動作します）。検索エンジンには登録されません。</div>
 
 <a class="skip" href="index.html#main">本文へスキップ</a>
 
@@ -1059,7 +1060,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	<button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="前の図面">&#8249;</button>
 	<button class="lightbox__nav lightbox__nav--next" type="button" aria-label="次の図面">&#8250;</button>
 	<div>
-		<img src="index.html" alt="">
+		<!-- src は空にしない。空の src はブラウザが「ページ自身」を画像として
+		     読み込もうとし、無駄なリクエストと画像エラーを起こすため。
+		     拡大表示を開いた時点で JS が src を設定する。 -->
+		<img alt="" hidden>
 		<p class="lightbox__cap"></p>
 	</div>
 </div>

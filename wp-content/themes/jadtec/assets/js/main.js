@@ -103,6 +103,7 @@
       if (!t) return;
       lbImg.src = t.dataset.full;
       lbImg.alt = t.dataset.alt || '';
+      lbImg.hidden = false;
       lbCap.textContent = t.dataset.caption + '（' + (index + 1) + ' / ' + openList.length + '）';
     };
 
@@ -121,7 +122,8 @@
 
     var close = function () {
       lb.removeAttribute('open');
-      lbImg.src = '';
+      lbImg.hidden = true;
+      lbImg.removeAttribute('src');   // src="" にすると再びページ自身を読みに行くため、属性ごと外す
       document.body.style.overflow = '';
       if (lastFocused) lastFocused.focus(); // 元のサムネイルへフォーカスを戻す
     };
