@@ -286,6 +286,89 @@
   }
 
   /* ---------------------------------------------------------------
+   * 6-a. 360度パノラマ・ビューア（外部ライブラリなし）
+   *
+   *  equirectangular画像を背景に敷き、ドラッグで背景位置を動かして
+   *  「見渡す」体験にする。横は repeat-x で360度シームレスに一周。
+   *  JSが動かない場合は <noscript> の通常画像が出るので、内容は必ず見える。
+   * ------------------------------------------------------------- */
+  document.querySelectorAll('.pano').forEach(function (pano) {
+    var url = pano.dataset.pano;
+    var fallback = pano.dataset.panoFallback;
+    if (!url) return;
+
+    // WebP対応を確認し、ダメなら jpg。読み込めたら背景に設定してドラッグ可能化。
+    var img = new Image();
+    img.onload = function () { activate(url); };
+    img.onerror = function () { if (fallback) { var j = new Image(); j.onload = function(){ activate(fallback); }; j.src = fallback; } };
+    img.src = url;
+
+    function activate(src) {
+      pano.style.backgroundImage = 'url("' + src + '")';
+      pano.classList.add('is-ready');
+
+      var x = 50, y = 50;          // 背景位置（%）。初期は中央。
+      pano.style.backgroundPosition = x + '% ' + y + '%';
+
+      var dragging = false, lastX = 0, lastY = 0;
+
+      var apply = function () {
+        // 縦は0〜100%でクランプ（上下の端を越えて空白が出ないように）。
+        // 横は repeat-x なので何%でもシームレス。負の値も許容し、剰余で丸める。
+        var yy = Math.max(0, Math.min(100, y));
+        var xx = ((x % 100) + 100) % 100;
+        pano.style.backgroundPosition = xx + '% ' + yy + '%';
+      };
+
+      var start = function (px, py) {
+        dragging = true; lastX = px; lastY = py;
+        pano.classList.add('is-grabbing', 'is-touched');
+      };
+      var move = function (px, py) {
+        if (!dragging) return;
+        // 画面幅に対する移動量を%に変換。感度は控えめに。
+        x -= (px - lastX) / pano.clientWidth * 60;
+        y -= (py - lastY) / pano.clientHeight * 50;
+        lastX = px; lastY = py;
+        apply();
+      };
+      var end = function () { dragging = false; pano.classList.remove('is-grabbing'); };
+
+      // pointer と mouse/touch の両方に対応（環境差で確実に動くように）
+      var supportsPointer = 'onpointerdown' in window;
+      if (supportsPointer) {
+        pano.addEventListener('pointerdown', function (e) {
+          try { pano.setPointerCapture(e.pointerId); } catch (err) {}
+          start(e.clientX, e.clientY); e.preventDefault();
+        });
+        window.addEventListener('pointermove', function (e) { move(e.clientX, e.clientY); });
+        window.addEventListener('pointerup', end);
+        window.addEventListener('pointercancel', end);
+      } else {
+        pano.addEventListener('mousedown', function (e) { start(e.clientX, e.clientY); e.preventDefault(); });
+        window.addEventListener('mousemove', function (e) { move(e.clientX, e.clientY); });
+        window.addEventListener('mouseup', end);
+        pano.addEventListener('touchstart', function (e) { var t=e.touches[0]; start(t.clientX, t.clientY); }, {passive:true});
+        pano.addEventListener('touchmove', function (e) { var t=e.touches[0]; move(t.clientX, t.clientY); e.preventDefault(); }, {passive:false});
+        pano.addEventListener('touchend', end);
+      }
+
+      // キーボード操作（矢印キー）。フォーカス可能なので視点を動かせる。
+      pano.addEventListener('keydown', function (e) {
+        var step = 6;
+        if (e.key === 'ArrowLeft')  { x -= step; }
+        else if (e.key === 'ArrowRight') { x += step; }
+        else if (e.key === 'ArrowUp')    { y -= step; }
+        else if (e.key === 'ArrowDown')  { y += step; }
+        else { return; }
+        e.preventDefault();
+        pano.classList.add('is-touched');
+        apply();
+      });
+    }
+  });
+
+  /* ---------------------------------------------------------------
    * 6-b. YouTube 参考動画 — クリックで初めて読み込むファサード
    *
    *  - 初期表示ではサムネイルのみ。押されて初めて YouTube を読み込む

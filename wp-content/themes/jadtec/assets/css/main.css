@@ -1261,3 +1261,51 @@ table { border-collapse: collapse; width: 100%; }
   .ytembed__btn:hover .ytembed__thumb { transform: none; }
   .ytembed__btn:hover .ytembed__play { transform: translate(-50%, -50%); }
 }
+
+/* ==========================================================================
+   21. 360度パノラマ・ビューア
+   ========================================================================== */
+.pano-figure { margin: 0; }
+.pano {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--navy-900) center/cover no-repeat;
+  cursor: grab;
+  touch-action: none;            /* スワイプでページがスクロールしないように */
+  user-select: none;
+}
+.pano.is-grabbing { cursor: grabbing; }
+.pano:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+/* JSが有効化したら、背景をドラッグで動かすモードにする */
+.pano.is-ready {
+  background-repeat: repeat-x;   /* 横方向に360度シームレスに一周 */
+  background-size: auto 165%;    /* 上下に見回す余白を確保 */
+}
+.pano__hint {
+  position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .45rem .9rem; border-radius: 999px;
+  background: rgba(10,37,64,.72); color: #fff;
+  font-size: var(--fs-sm); font-weight: 700; white-space: nowrap;
+  pointer-events: none; transition: opacity .4s ease;
+}
+.pano__hint svg { width: 16px; height: 16px; fill: var(--brand); }
+.pano.is-touched .pano__hint { opacity: 0; }
+.pano__badge {
+  position: absolute; top: .7rem; right: .7rem;
+  padding: .25rem .6rem; border-radius: 2px;
+  background: var(--brand); color: #fff;
+  font-family: var(--font-en); font-size: .8rem; font-weight: 700; letter-spacing: .05em;
+  pointer-events: none;
+}
+.pano-figure__cap { margin-top: .85rem; }
+.pano-figure__title { display: block; font-weight: 700; color: var(--navy-900); }
+.pano-figure__note {
+  display: block; margin-top: .6rem; padding: .7rem .9rem;
+  background: var(--brand-tint); border: 1px solid var(--brand-tint-2);
+  border-left: 3px solid var(--brand); border-radius: var(--radius);
+  font-size: var(--fs-sm); line-height: 1.8; color: var(--navy-900); font-weight: 500;
+}
+.pano-figure__note::before { content: "🖱 "; }

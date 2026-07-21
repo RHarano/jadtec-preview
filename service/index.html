@@ -755,7 +755,34 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				</div>
 
 				<div>
-											<h3 class="card__title" style="margin-bottom:1rem">参考動画</h3>
+											<!-- 360度パノラマビューア（ドラッグで見渡せる） -->
+						<h3 class="card__title" style="margin-bottom:1rem">360度パノラマ</h3>
+													<figure class="pano-figure">
+	<div class="pano"
+	     tabindex="0"
+	     role="img"
+	     aria-label="リビング（360度パノラマ）。ドラッグまたは矢印キーで360度見渡せます。"
+	     data-pano="https://jadtec.tokyo/wp-content/themes/jadtec/assets/img/pano/pano-01.webp"
+	     data-pano-fallback="https://jadtec.tokyo/wp-content/themes/jadtec/assets/img/pano/pano-01.jpg">
+		<!-- JS無効時のフォールバック（通常の画像として表示） -->
+		<noscript>
+			<img src="../wp-content/themes/jadtec/assets/img/pano/pano-01.jpg" alt="リビング（360度パノラマ）" style="width:100%">
+		</noscript>
+		<span class="pano__hint">
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 2c1.2 0 2.3 2 2.7 5H9.3C9.7 9 10.8 7 12 7zm-5.2 5h2.4c-.1 .9-.2 1.9-.2 3s.1 2.1.2 3H6.8A7 7 0 016 12c0-.7.3-1.4.8-2zm10.4 0c.5 .6 .8 1.3 .8 2a7 7 0 01-.8 4h-2.4c.1-.9.2-1.9.2-3s-.1-2.1-.2-3h2.4zM9.3 15h5.4c-.4 3-1.5 5-2.7 5s-2.3-2-2.7-5z"/></svg>
+			ドラッグで360°見渡せます
+		</span>
+		<span class="pano__badge">360°</span>
+	</div>
+	<figcaption class="pano-figure__cap">
+		<span class="pano-figure__title">リビング（360度パノラマ）</span>
+					<span class="pano-figure__note">
+				室内を360度見渡せるパノラマパースです。画面をマウスでドラッグ（スマートフォンは指でスワイプ）すると、上下左右に視点を動かせます。
+			</span>
+			</figcaption>
+</figure>
+						
+						<h3 class="card__title" style="margin:2rem 0 1rem">参考動画</h3>
 						<div class="video-list">
 															<figure class="video-item">
 									<div class="ytembed"
@@ -797,6 +824,73 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 																			</figcaption>
 								</figure>
 													</div>
+
+						<h3 class="card__title" style="margin:2rem 0 1rem">3DCGパースの実例</h3>
+						<ul class="gallery" style="grid-template-columns:repeat(2,1fr)">
+															<li data-category="cg">
+	<figure class="shot">
+		<button class="shot__btn" type="button"
+		        data-full="https://jadtec.tokyo/wp-content/themes/jadtec/assets/img/samples/cg-lobby-01.jpg"
+		        data-caption="ロビー｜CG・パース"
+		        data-alt="ロビー（CG・パース）のサンプル図面。ホテルのロビーを想定した3DCG内観パース。素材や照明の質感まで表現。">
+			<span class="shot__frame">
+				<picture><source srcset="../wp-content/themes/jadtec/assets/img/samples/cg-lobby-01.webp" type="image/webp"><img src="../wp-content/themes/jadtec/assets/img/samples/cg-lobby-01.jpg" alt="ロビー（CG・パース）のサンプル図面。ホテルのロビーを想定した3DCG内観パース。素材や照明の質感まで表現。" class="" loading="lazy" decoding="async" width="799" height="600"></picture>			</span>
+			<figcaption class="shot__cap">
+				<span>ロビー</span>
+									<span class="shot__tag">CG・パース</span>
+							</figcaption>
+		</button>
+	</figure>
+</li>
+															<li data-category="cg">
+	<figure class="shot">
+		<button class="shot__btn" type="button"
+		        data-full="https://jadtec.tokyo/wp-content/themes/jadtec/assets/img/samples/cg-bedroom-01.jpg"
+		        data-caption="客室（ベッドルーム）｜CG・パース"
+		        data-alt="客室（ベッドルーム）（CG・パース）のサンプル図面。客室のベッドルームを想定した3DCG内観パース。">
+			<span class="shot__frame">
+				<picture><source srcset="../wp-content/themes/jadtec/assets/img/samples/cg-bedroom-01.webp" type="image/webp"><img src="../wp-content/themes/jadtec/assets/img/samples/cg-bedroom-01.jpg" alt="客室（ベッドルーム）（CG・パース）のサンプル図面。客室のベッドルームを想定した3DCG内観パース。" class="" loading="lazy" decoding="async" width="800" height="600"></picture>			</span>
+			<figcaption class="shot__cap">
+				<span>客室（ベッドルーム）</span>
+									<span class="shot__tag">CG・パース</span>
+							</figcaption>
+		</button>
+	</figure>
+</li>
+															<li data-category="cg">
+	<figure class="shot">
+		<button class="shot__btn" type="button"
+		        data-full="https://jadtec.tokyo/wp-content/themes/jadtec/assets/img/samples/cg-lounge-01.jpg"
+		        data-caption="ラウンジバー｜CG・パース"
+		        data-alt="ラウンジバー（CG・パース）のサンプル図面。ラウンジバーを想定した3DCG内観パース。">
+			<span class="shot__frame">
+				<picture><source srcset="../wp-content/themes/jadtec/assets/img/samples/cg-lounge-01.webp" type="image/webp"><img src="../wp-content/themes/jadtec/assets/img/samples/cg-lounge-01.jpg" alt="ラウンジバー（CG・パース）のサンプル図面。ラウンジバーを想定した3DCG内観パース。" class="" loading="lazy" decoding="async" width="800" height="500"></picture>			</span>
+			<figcaption class="shot__cap">
+				<span>ラウンジバー</span>
+									<span class="shot__tag">CG・パース</span>
+							</figcaption>
+		</button>
+	</figure>
+</li>
+															<li data-category="cg">
+	<figure class="shot">
+		<button class="shot__btn" type="button"
+		        data-full="https://jadtec.tokyo/wp-content/themes/jadtec/assets/img/samples/cg-restaurant-01.jpg"
+		        data-caption="レストラン｜CG・パース"
+		        data-alt="レストラン（CG・パース）のサンプル図面。レストランを想定した3DCG内観パース。">
+			<span class="shot__frame">
+				<picture><source srcset="../wp-content/themes/jadtec/assets/img/samples/cg-restaurant-01.webp" type="image/webp"><img src="../wp-content/themes/jadtec/assets/img/samples/cg-restaurant-01.jpg" alt="レストラン（CG・パース）のサンプル図面。レストランを想定した3DCG内観パース。" class="" loading="lazy" decoding="async" width="800" height="600"></picture>			</span>
+			<figcaption class="shot__cap">
+				<span>レストラン</span>
+									<span class="shot__tag">CG・パース</span>
+							</figcaption>
+		</button>
+	</figure>
+</li>
+													</ul>
+						<p style="margin-top:1rem">
+							<a class="card__more" href="../sample/index.html#cg">CG・パースのサンプルをもっと見る</a>
+						</p>
 									</div>
 			</div>
 		</div>
