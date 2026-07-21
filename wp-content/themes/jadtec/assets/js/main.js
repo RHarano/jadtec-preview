@@ -286,6 +286,36 @@
   }
 
   /* ---------------------------------------------------------------
+   * 6-b. YouTube 参考動画 — クリックで初めて読み込むファサード
+   *
+   *  - 初期表示ではサムネイルのみ。押されて初めて YouTube を読み込む
+   *    （表示速度＋クリックまで外部通信しないプライバシー配慮）
+   *  - youtube-nocookie を使用
+   *  - 360度動画は再生後、YouTubeプレイヤーが標準でドラッグ操作に対応
+   * ------------------------------------------------------------- */
+  document.querySelectorAll('.ytembed').forEach(function (box) {
+    var btn = box.querySelector('.ytembed__btn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var id = box.dataset.yt;
+      var title = box.dataset.title || '';
+      if (!id) return;
+      var iframe = document.createElement('iframe');
+      // rel=0: 関連動画を自社チャンネル内に限定 / autoplay=1: クリック後の再生
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) +
+        '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      iframe.title = title;
+      iframe.loading = 'lazy';
+      iframe.setAttribute('allow',
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      box.innerHTML = '';
+      box.appendChild(iframe);
+      iframe.focus();
+    });
+  });
+
+  /* ---------------------------------------------------------------
    * 7. 紹介動画 — クリックで初めて読み込む（自動再生しない）
    *    23MBのmp4を初期表示で読ませないことで表示速度を確保する
    * ------------------------------------------------------------- */
