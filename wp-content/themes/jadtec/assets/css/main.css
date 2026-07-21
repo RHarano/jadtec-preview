@@ -1309,3 +1309,6 @@ table { border-collapse: collapse; width: 100%; }
   font-size: var(--fs-sm); line-height: 1.8; color: var(--navy-900); font-weight: 500;
 }
 .pano-figure__note::before { content: "🖱 "; }
+
+/* 業務内容ページ VR・3DCGパースの全幅動画（2列）で、キャプションの高さを揃える */
+.grid--2 > .video-item { margin: 0; }

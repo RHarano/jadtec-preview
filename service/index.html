@@ -337,7 +337,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</p>
 									</div>
 			</div>
-		</div>
+
+					</div>
 	</section>
 		<section class="section section--alt" id="construction">
 		<div class="wrap">
@@ -442,7 +443,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</p>
 									</div>
 			</div>
-		</div>
+
+					</div>
 	</section>
 		<section class="section " id="calc">
 		<div class="wrap">
@@ -515,7 +517,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</p>
 									</div>
 			</div>
-		</div>
+
+					</div>
 	</section>
 		<section class="section section--alt" id="document">
 		<div class="wrap">
@@ -578,7 +581,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 									</div>
 			</div>
-		</div>
+
+					</div>
 	</section>
 		<section class="section " id="estimate">
 		<div class="wrap">
@@ -639,7 +643,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 									</div>
 			</div>
-		</div>
+
+					</div>
 	</section>
 		<section class="section section--alt" id="bim">
 		<div class="wrap">
@@ -702,7 +707,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 									</div>
 			</div>
-		</div>
+
+					</div>
 	</section>
 		<section class="section " id="cg">
 		<div class="wrap">
@@ -755,7 +761,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				</div>
 
 				<div>
-											<!-- 360度パノラマビューア（ドラッグで見渡せる） -->
+											<!-- 上段の右カラムは360度パノラマのみ。動画と実例はこのグリッドの外で全幅表示し、
+						     左カラムに大きな余白ができないようにする。 -->
 						<h3 class="card__title" style="margin-bottom:1rem">360度パノラマ</h3>
 													<figure class="pano-figure">
 	<div class="pano"
@@ -781,11 +788,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			</span>
 			</figcaption>
 </figure>
-						
-						<h3 class="card__title" style="margin:2rem 0 1rem">参考動画</h3>
-						<div class="video-list">
-															<figure class="video-item">
-									<div class="ytembed"
+															</div>
+			</div>
+
+							<!-- 全幅：参考動画（横並び）＋3DCGパースの実例（4列）。
+				     上段グリッドの外に出すことで、左カラムに大きな余白が生じないようにする。 -->
+				<div style="margin-top:clamp(2.5rem,4vw,3.5rem)">
+					<h3 class="card__title" style="margin-bottom:1.25rem">参考動画</h3>
+					<div class="grid grid--2">
+													<figure class="video-item">
+								<div class="ytembed"
      data-yt="Vpp9SaU04QE"
      data-title="3DCG動画（建築パースのサンプル）"
      data-panorama="0">
@@ -797,14 +809,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		</span>
 			</button>
 </div>
-									<figcaption class="video-item__cap">
-										<span class="video-item__title">3DCG動画（建築パースのサンプル）</span>
-																					<span class="video-item__note">
-												建物の外観・内観を、色彩や質感まで表現した3DCGパースの動画例です。											</span>
-																			</figcaption>
-								</figure>
-															<figure class="video-item">
-									<div class="ytembed ytembed--360"
+								<figcaption class="video-item__cap">
+									<span class="video-item__title">3DCG動画（建築パースのサンプル）</span>
+																			<span class="video-item__note">
+											建物の外観・内観を、色彩や質感まで表現した3DCGパースの動画例です。										</span>
+																	</figcaption>
+							</figure>
+													<figure class="video-item">
+								<div class="ytembed ytembed--360"
      data-yt="5VaGHugZNAA"
      data-title="360度パノラマ動画（3D_CGパース）"
      data-panorama="1">
@@ -817,17 +829,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					<span class="ytembed__badge">360°</span>
 			</button>
 </div>
-									<figcaption class="video-item__cap">
-										<span class="video-item__title">360度パノラマ動画（3D_CGパース）</span>
-																					<span class="video-item__note video-item__note--360">
-												この動画は360度パノラマです。再生後、画面をマウスでドラッグ（スマートフォンは指でスワイプ、または端末を傾ける）すると、上下左右に視点を動かして室内を見渡せます。											</span>
-																			</figcaption>
-								</figure>
-													</div>
+								<figcaption class="video-item__cap">
+									<span class="video-item__title">360度パノラマ動画（3D_CGパース）</span>
+																			<span class="video-item__note video-item__note--360">
+											この動画は360度パノラマです。再生後、画面をマウスでドラッグ（スマートフォンは指でスワイプ、または端末を傾ける）すると、上下左右に視点を動かして室内を見渡せます。										</span>
+																	</figcaption>
+							</figure>
+											</div>
 
-						<h3 class="card__title" style="margin:2rem 0 1rem">3DCGパースの実例</h3>
-						<ul class="gallery" style="grid-template-columns:repeat(2,1fr)">
-															<li data-category="cg">
+					<h3 class="card__title" style="margin:clamp(2rem,3vw,2.75rem) 0 1.25rem">3DCGパースの実例</h3>
+					<ul class="gallery gallery--top">
+													<li data-category="cg">
 	<figure class="shot">
 		<button class="shot__btn" type="button"
 		        data-full="../wp-content/themes/jadtec/assets/img/samples/cg-lobby-01.jpg"
@@ -842,7 +854,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		</button>
 	</figure>
 </li>
-															<li data-category="cg">
+													<li data-category="cg">
 	<figure class="shot">
 		<button class="shot__btn" type="button"
 		        data-full="../wp-content/themes/jadtec/assets/img/samples/cg-bedroom-01.jpg"
@@ -857,7 +869,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		</button>
 	</figure>
 </li>
-															<li data-category="cg">
+													<li data-category="cg">
 	<figure class="shot">
 		<button class="shot__btn" type="button"
 		        data-full="../wp-content/themes/jadtec/assets/img/samples/cg-lounge-01.jpg"
@@ -872,7 +884,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		</button>
 	</figure>
 </li>
-															<li data-category="cg">
+													<li data-category="cg">
 	<figure class="shot">
 		<button class="shot__btn" type="button"
 		        data-full="../wp-content/themes/jadtec/assets/img/samples/cg-restaurant-01.jpg"
@@ -887,13 +899,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		</button>
 	</figure>
 </li>
-													</ul>
-						<p style="margin-top:1rem">
-							<a class="card__more" href="../sample/index.html#cg">CG・パースのサンプルをもっと見る</a>
-						</p>
-									</div>
-			</div>
-		</div>
+											</ul>
+					<p style="margin-top:1.25rem">
+						<a class="card__more" href="../sample/index.html#cg">CG・パースのサンプルをもっと見る</a>
+					</p>
+				</div>
+					</div>
 	</section>
 		<section class="section section--alt" id="trace">
 		<div class="wrap">
@@ -981,7 +992,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</p>
 									</div>
 			</div>
-		</div>
+
+					</div>
 	</section>
 		<section class="section " id="scan">
 		<div class="wrap">
@@ -1044,7 +1056,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 									</div>
 			</div>
-		</div>
+
+					</div>
 	</section>
 		<section class="section section--alt" id="system">
 		<div class="wrap">
@@ -1106,7 +1119,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 						</div>
 									</div>
 			</div>
-		</div>
+
+					</div>
 	</section>
 
 <!-- 取引条件（官公庁・法人向け） -->
