@@ -837,6 +837,76 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 							</figure>
 											</div>
 
+					<h3 class="card__title" style="margin:clamp(2rem,3vw,2.75rem) 0 1.25rem">3DCGウォークスルー動画</h3>
+					<div class="grid grid--2" style="align-items:start">
+						<div class="video-frame">
+	<button type="button" data-video-play
+	        style="display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;position:relative"
+	        aria-label="動画を再生：3DCGウォークスルー動画（建築パース）">
+		<img src="../wp-content/themes/jadtec/assets/img/cg-walkthrough-poster.jpg" alt="3DCGウォークスルー動画（建築パース）"
+		     width="1600" height="900" loading="lazy" decoding="async">
+		<span class="video-frame__play" aria-hidden="true">
+			<svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-3-5.2-6-6C55.1.2 34 .2 34 .2S12.9.2 7.5 1.7c-2.9.8-5.2 3-6 6C0 13.1 0 24 0 24s0 10.9 1.5 16.3c.8 2.9 3 5.2 6 6C12.9 47.8 34 47.8 34 47.8s21.1 0 26.5-1.5c2.9-.8 5.2-3 6-6C68 34.9 68 24 68 24s0-10.9-1.5-16.3z" fill="rgba(10,37,64,.82)"/><path d="M27 34l18-10-18-10z" fill="#fff"/></svg>
+		</span>
+	</button>
+	<video hidden preload="none" playsinline
+	       poster="../wp-content/themes/jadtec/assets/img/cg-walkthrough-poster.jpg">
+		<source src="../wp-content/themes/jadtec/assets/video/cg-walkthrough.mp4" type="video/mp4">
+		お使いのブラウザーは動画の再生に対応していません。
+		<a href="../wp-content/themes/jadtec/assets/video/cg-walkthrough.mp4">動画ファイルを開く</a>
+	</video>
+</div>
+						<div>
+							<p style="line-height:2;color:var(--ink-2)">
+								建物の外観・内観を、光や素材の質感まで表現した3DCGのウォークスルー動画です。
+								完成後の空間を、静止画よりも具体的にイメージしていただけます。
+								プレゼンテーションや合意形成の場面でご活用いただけます。
+							</p>
+							<p class="field__hint" style="margin-top:.75rem">クリックすると再生します（自動再生はしません）。</p>
+						</div>
+					</div>
+
+					<h3 class="card__title" style="margin:clamp(2rem,3vw,2.75rem) 0 1.25rem">仕上がりの比較</h3>
+					<div class="grid grid--2" style="align-items:start">
+						<figure class="compare-figure">
+	<div class="compare" data-compare style="--pos:50%">
+		<!-- 下の層：右ラベルの画像（全面） -->
+		<picture class="compare__base">
+			<source srcset="../wp-content/themes/jadtec/assets/img/samples/cg-photoreal-b.webp" type="image/webp">
+			<img src="../wp-content/themes/jadtec/assets/img/samples/cg-photoreal-b.jpg" alt="高画質の3DCGパース" width="1600" height="880" loading="lazy" decoding="async">
+		</picture>
+		<!-- 上の層：左ラベルの画像を境界でクリップ -->
+		<div class="compare__top" aria-hidden="true">
+			<picture>
+				<source srcset="../wp-content/themes/jadtec/assets/img/samples/cg-photoreal-a.webp" type="image/webp">
+				<img src="../wp-content/themes/jadtec/assets/img/samples/cg-photoreal-a.jpg" alt="" width="1600" height="880" loading="lazy" decoding="async">
+			</picture>
+		</div>
+		<span class="compare__divider" aria-hidden="true">
+			<span class="compare__knob"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5V7zm8 0v10l5-5-5-5z" fill="currentColor"/></svg></span>
+		</span>
+		<span class="compare__tag compare__tag--l">フォトリアル</span>
+		<span class="compare__tag compare__tag--r">高画質</span>
+		<!-- キーボード・スクリーンリーダー用のコントロール（見た目は隠すが操作可能） -->
+		<input type="range" class="compare__range visually-hidden" min="0" max="100" value="50" step="1"
+		       aria-label="フォトリアルと高画質を比較。左右の矢印キーで境界を動かせます。">
+	</div>
+			<figcaption class="compare-figure__cap">
+			同じ3DCGパースでも、ライティングや色調の追い込みによって印象が変わります。			<span class="compare-figure__hint">中央のハンドルを左右にドラッグすると見比べられます。</span>
+		</figcaption>
+	</figure>
+						<div>
+							<p style="line-height:2;color:var(--ink-2)">
+								プレゼンテーションの目的や用途にあわせて、仕上がりの質感を調整いたします。
+								改修工事のビフォーアフター、造成、都市計画シミュレーションなど、
+								比較して見せたい場面にも対応いたします。
+							</p>
+							<p style="margin-top:1rem">
+								<a class="card__more" href="../contact/index.html">CG・パースについて相談する</a>
+							</p>
+						</div>
+					</div>
+
 					<h3 class="card__title" style="margin:clamp(2rem,3vw,2.75rem) 0 1.25rem">3DCGパースの実例</h3>
 					<ul class="gallery gallery--top">
 													<li data-category="cg">

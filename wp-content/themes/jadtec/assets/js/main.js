@@ -286,6 +286,38 @@
   }
 
   /* ---------------------------------------------------------------
+   * 5-c. ビフォー／アフター 比較スライダー
+   *  ドラッグ／スワイプ／矢印キーで境界を動かして2枚を見比べる。
+   * ------------------------------------------------------------- */
+  document.querySelectorAll('[data-compare]').forEach(function (box) {
+    var range = box.querySelector('.compare__range');
+    var setPos = function (v) {
+      v = Math.max(0, Math.min(100, v));
+      box.style.setProperty('--pos', v + '%');
+      if (range) range.value = v;
+    };
+    var fromEvent = function (clientX) {
+      var r = box.getBoundingClientRect();
+      setPos((clientX - r.left) / r.width * 100);
+    };
+    var dragging = false;
+    box.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      try { box.setPointerCapture(e.pointerId); } catch (err) {}
+      fromEvent(e.clientX); e.preventDefault();
+    });
+    box.addEventListener('pointermove', function (e) { if (dragging) fromEvent(e.clientX); });
+    box.addEventListener('pointerup', function () { dragging = false; });
+    box.addEventListener('pointercancel', function () { dragging = false; });
+    // マウス非pointer環境のフォールバック
+    box.addEventListener('mousedown', function (e) { dragging = true; fromEvent(e.clientX); });
+    window.addEventListener('mousemove', function (e) { if (dragging) fromEvent(e.clientX); });
+    window.addEventListener('mouseup', function () { dragging = false; });
+    // キーボード（隠しrange）
+    if (range) range.addEventListener('input', function () { setPos(parseFloat(range.value)); });
+  });
+
+  /* ---------------------------------------------------------------
    * 6-a. 360度パノラマ・ビューア（外部ライブラリなし）
    *
    *  equirectangular画像を背景に敷き、ドラッグで背景位置を動かして
@@ -399,18 +431,19 @@
   });
 
   /* ---------------------------------------------------------------
-   * 7. 紹介動画 — クリックで初めて読み込む（自動再生しない）
-   *    23MBのmp4を初期表示で読ませないことで表示速度を確保する
+   * 7. 自己ホスト動画 — クリックで初めて読み込む（自動再生しない）
+   *    大きなmp4を初期表示で読ませないことで表示速度を確保する。
+   *    紹介動画・3DCGウォークスルーなど複数に対応。
    * ------------------------------------------------------------- */
-  var videoBtn = document.querySelector('[data-video-play]');
-  if (videoBtn) {
-    videoBtn.addEventListener('click', function () {
-      var wrap = videoBtn.closest('.video-frame');
+  document.querySelectorAll('[data-video-play]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var wrap = btn.closest('.video-frame');
       var video = wrap.querySelector('video');
+      if (!video) return;
       video.hidden = false;
       video.setAttribute('controls', '');
-      videoBtn.remove();
+      btn.remove();
       video.play();
     });
-  }
+  });
 })();
