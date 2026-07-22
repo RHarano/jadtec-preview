@@ -182,7 +182,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					<form class="form" method="post" enctype="multipart/form-data" data-once onsubmit="alert('確認用プレビューのため送信は無効です。本番環境では確認画面へ進めます。');return false;"
 					      style="margin-top:0">
 						<input type="hidden" id="jadtec_nonce" name="jadtec_nonce" value="8f45a5a5b1" /><input type="hidden" name="_wp_http_referer" value="/contact/" />						<input type="hidden" name="jadtec_action_step" value="confirm">
-						<input type="hidden" name="jadtec_started_at" value="1784738413">
+						<input type="hidden" name="jadtec_started_at" value="1784738809">
 						<input type="hidden" name="jadtec_file_token" value="">
 
 						<!-- ハニーポット（人には見えない。botが埋めたら弾く） -->
@@ -195,80 +195,42 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 							<span class="req">必須</span> は入力が必要な項目です。
 						</p>
 
-						<!-- お問い合わせ種別 -->
-						<fieldset class="field" id="field-inquiry_type">
-							<legend class="field__label">
+						<!-- お問い合わせ種別（プルダウン） -->
+						<div class="field" id="field-inquiry_type">
+							<label class="field__label" for="jadtec_inquiry_type">
 								お問い合わせ種別 <span class="req">必須</span>
-							</legend>
-							<p class="field__hint">複数選択いただけます。</p>
-														<div class="checks">
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="図面作成"
-											>
-										<span>図面作成</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="施工図"
-											>
-										<span>施工図</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="CADトレース"
-											>
-										<span>CADトレース</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="CG・パース"
-											>
-										<span>CG・パース</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="BIM・3D"
-											>
-										<span>BIM・3D</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="積算"
-											>
-										<span>積算</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="構造・省エネ計算サポート"
-											>
-										<span>構造・省エネ計算サポート</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="申請書・書類作成"
-											>
-										<span>申請書・書類作成</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="製本"
-											>
-										<span>製本</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="電子化・スキャニング"
-											>
-										<span>電子化・スキャニング</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="システム開発"
-											>
-										<span>システム開発</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="翻訳"
-											>
-										<span>翻訳</span>
-									</label>
-																	<label class="check">
-										<input type="checkbox" name="jadtec_inquiry_type[]" value="その他"
-											>
-										<span>その他</span>
-									</label>
-															</div>
-						</fieldset>
+							</label>
+														<select class="select" id="jadtec_inquiry_type" name="jadtec_inquiry_type" required
+								>
+								<option value="">選択してください</option>
+																	<option value="図面作成" >
+										図面作成									</option>
+																	<option value="施工図" >
+										施工図									</option>
+																	<option value="CADトレース" >
+										CADトレース									</option>
+																	<option value="CG・パース" >
+										CG・パース									</option>
+																	<option value="BIM・3D" >
+										BIM・3D									</option>
+																	<option value="積算" >
+										積算									</option>
+																	<option value="構造・省エネ計算サポート" >
+										構造・省エネ計算サポート									</option>
+																	<option value="申請書・書類作成" >
+										申請書・書類作成									</option>
+																	<option value="製本" >
+										製本									</option>
+																	<option value="電子化・スキャニング" >
+										電子化・スキャニング									</option>
+																	<option value="システム開発" >
+										システム開発									</option>
+																	<option value="翻訳" >
+										翻訳									</option>
+																	<option value="その他" >
+										その他									</option>
+															</select>
+						</div>
 
 													<div class="field" id="field-company">
 								<label class="field__label" for="jadtec_company">
