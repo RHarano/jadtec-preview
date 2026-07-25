@@ -1404,3 +1404,11 @@ table { border-collapse: collapse; width: 100%; }
 .video-frame__play svg { width: 100%; height: 100%; filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
 .video-frame button:hover .video-frame__play { transform: translate(-50%, -50%) scale(1.08); }
 @media (prefers-reduced-motion: reduce) { .video-frame button:hover .video-frame__play { transform: translate(-50%, -50%); } }
+
+/* 日本語の改行品質。行頭に来てはいけない記号での折り返しを抑制（安全側・オーバーフローしない）。
+   見出しやリード文が不自然な位置で改行されるのを軽減する。 */
+h1, h2, h3, h4,
+.hero__lead, .sec-head__lead, .page-head__lead,
+.card__title, .reason__title, .flow__title {
+  line-break: strict;
+}
