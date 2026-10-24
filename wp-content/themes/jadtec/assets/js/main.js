@@ -94,6 +94,7 @@
   if (lb) {
     var lbImg = lb.querySelector('img');
     var lbCap = lb.querySelector('.lightbox__cap');
+    var lbOpen = lb.querySelector('.lightbox__open');
     var lastFocused = null;
     var openList = [];
     var index = 0;
@@ -105,6 +106,7 @@
       lbImg.alt = t.dataset.alt || '';
       lbImg.hidden = false;
       lbCap.textContent = t.dataset.caption + '（' + (index + 1) + ' / ' + openList.length + '）';
+      if (lbOpen) lbOpen.href = t.dataset.full;
     };
 
     var open = function (trigger) {
@@ -136,7 +138,11 @@
     document.addEventListener('click', function (e) {
       var t = e.target.closest('.shot__btn');
       if (t) { open(t); return; }
-      if (e.target.closest('.lightbox__close') || e.target === lb) { close(); return; }
+      // 閉じるボタンのほか、図面・ボタン・リンク以外の部分（暗い背景やキャプション）を押しても閉じる
+      if (e.target.closest('.lightbox__close') ||
+          (lb.hasAttribute('open') && lb.contains(e.target) && !e.target.closest('img, button, a'))) {
+        close(); return;
+      }
       if (e.target.closest('.lightbox__nav--prev')) { step(-1); return; }
       if (e.target.closest('.lightbox__nav--next')) { step(1); }
     });
@@ -148,7 +154,7 @@
       if (e.key === 'ArrowRight') step(1);
       // フォーカスをライトボックス内に閉じ込める
       if (e.key === 'Tab') {
-        var f = lb.querySelectorAll('button');
+        var f = lb.querySelectorAll('button, a[href]');
         var first = f[0];
         var last = f[f.length - 1];
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -156,6 +162,17 @@
       }
     });
   }
+
+  /* ---------------------------------------------------------------
+   * 3-b. サムネイルの読み込み失敗
+   *  失敗した画像は、空白の枠のまま残さず「表示できませんでした」と示す。
+   *  （読み込み中は枠の方眼が見えるため、空欄には見えない）
+   * ------------------------------------------------------------- */
+  document.querySelectorAll('.shot__frame img').forEach(function (img) {
+    var fail = function () { img.closest('.shot__frame').classList.add('is-error'); };
+    if (img.complete && img.currentSrc && img.naturalWidth === 0) fail();
+    else img.addEventListener('error', fail);
+  });
 
   /* ---------------------------------------------------------------
    * 4. お問い合わせフォーム — 二重送信の防止
@@ -208,7 +225,7 @@
     // 同じ行に並ぶものは少しずつ遅らせて、順に線が引かれていくように見せる
     revealTargets.forEach(function (el) {
       var i = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
-      el.style.setProperty('--d', Math.min(i, 6) * 70 + 'ms');
+      el.style.setProperty('--d', Math.min(i, 4) * 60 + 'ms');
     });
 
     var countUp = function (el) {
@@ -256,8 +273,8 @@
     window.addEventListener('load', onScroll);
     check();                                        // 初期表示ぶんを即座に判定
 
-    // 安全網: 何があっても3秒後には全部表示する（内容が読めない事故を絶対に起こさない）
-    setTimeout(revealAll, 3000);
+    // 安全網: 何があっても2秒後には全部表示する（内容が読めない事故を絶対に起こさない）
+    setTimeout(revealAll, 2000);
   }
 
   /* ---------------------------------------------------------------
